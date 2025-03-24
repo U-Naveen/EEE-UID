@@ -1,0 +1,46 @@
+[System]
+Name='wind_fis'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=1
+NumRules=0
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Wind_Speed'
+Range=[8.318 15.43]
+NumMFs=3
+MF1='Low':'trapmf',[8.318 8.318 9.744 11.03]
+MF2='Medium':'trimf',[10.17 11.88 13.59]
+MF3='High':'trapmf',[12.75 15.12 15.71 18.08]
+
+[Input2]
+Name='Load_Variation'
+Range=[90 250]
+NumMFs=3
+MF1='Low':'trapmf',[90 90 110 130]
+MF2='Medium':'trimf',[120 170 210]
+MF3='High':'trapmf',[190 243.3 256.7 310]
+
+[Input3]
+Name='Frequency_Deviation'
+Range=[-0.5 0.5]
+NumMFs=3
+MF1='Low':'trapmf',[-0.5 -0.5 -0.3 -0.1]
+MF2='Medium':'trimf',[-0.2 0 0.2]
+MF3='High':'trapmf',[0.1 0.3 0.5 0.5]
+
+[Output1]
+Name='Power_Regulation_Command'
+Range=[-300 300]
+NumMFs=3
+MF1='Decrease':'trapmf',[-300 -300 -150 -50]
+MF2='No_Change':'trimf',[-30 0 30]
+MF3='mf3Increase':'trapmf',[50 150 300 300]
+
+[Rules]
